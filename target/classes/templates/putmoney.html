@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container fluid text-center" >
+    <div><h4>Положить на баланс</h4>
+
+        <div>
+            <form th:action="@{/put_money}">
+                Введите фамилию клиента:   <input type="text" name="keyword"/>
+                &nbsp;
+                <input type="submit" value="Поиск"/>
+                &nbsp;
+                <input type="button" value="Очистить" onclick="clearFilter()"/>
+            </form>
+        </div>
+
+    </div>
+
+    <div align="center">  <a class="h5" th:href="@{/index}">Главная старница</a> </div>
+
+    <script type="text/javascript">
+        function clearFilter(){
+            window.location="putmoney";
+        }
+
+    </script>
+</body>
+</html>
