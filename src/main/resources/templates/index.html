@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ClientsList</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container fluid text-center" >
+<h2>Банкомат</h2>
+    <br>
+    <a class="h4" th:href="@{/getbalance}">Получить баланс клиента</a>
+    <br>
+    <a class="h4" th:href="@{/putmoney}">Положить деньги на баланс</a>
+    <br>
+    <a class="h4" th:href="@{/getmoney}">Снять деньги из баланса</a>
+    <br>
+    <a class="h4" th:href="@{/allclients}">Список клиентов</a>
+    <br>
+    <a class="h4" th:href="@{/clients/new }">Добавить нового клиента</a>
+
+</div>
+</body>
+</html>
