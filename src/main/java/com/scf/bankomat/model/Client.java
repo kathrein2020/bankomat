@@ -16,6 +16,9 @@ import javax.persistence.*;
 @Table(name="account")
 
 public class Client {
+
+
+
     //генерация id автоматический в БД
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +27,8 @@ public class Client {
     private String firstname;
     private String lastname;
     private Integer  balance;
+    private Integer amount;
 
 
-}
+    };
+
