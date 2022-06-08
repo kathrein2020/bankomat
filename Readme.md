@@ -9,3 +9,9 @@
 Добавить нового клиента
 
 Данные хранятся в Postgresql
+
+    //вычитание заданного баланса amount у донора клиента по id
+    @PutMapping("transferDel/{id}/{balance}/{amounts}")
+    
+    //добавление заданного баланса amount рецептиенту клиенту по id
+    @PutMapping("transferAdd/{id}/{balance}/{amounts}")
