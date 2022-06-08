@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -33,6 +30,8 @@ public class ClientController {
         return "clients";
     }
 
+
+
     @GetMapping("/allclients")
     public String showAllClients(Model model) {
         List<Client> listClients = clientService.listall();
@@ -46,13 +45,25 @@ public class ClientController {
         return "getbalance";
     }
 
-    @RequestMapping("/get_balance")
+    @PutMapping("/get_balance")
     public  String getBalance(Model model, @Param("keyword") String keyword){
         List<Client> listClients = clientService.list(keyword);
         model.addAttribute("listClients", listClients);
         return "get_balance";
     }
 
+
+//    @GetMapping("/moneyput")
+//    public String moneyPuts() {
+//        return "moneyput";
+//    }
+//
+//    @RequestMapping("/money_put")
+//    public String addMoney(Model model, @Param("amount") Integer amount, @Param("lastname") String lastname) {
+//        List<Client> moneyPut = clientService.pMoney(amount, lastname);
+//        model.addAttribute("moneyPut", moneyPut);
+//        return "money_put";
+//    }
 
 
     @GetMapping("/clients/new")
@@ -144,5 +155,22 @@ public String showEditForm(@PathVariable("id") Integer id, Model model, Redirect
         }
     }
 
+    //через постман
+    @PutMapping("updateBalance/{lastname}/{balance}")
+    public String updateBalance (@PathVariable String lastname, @PathVariable Integer balance){
+    return clientService.updateBalance(lastname, balance) + "allclients";
+}
+
+//перевод денег
+//вычитание заданного баланса amount у донора клиента по id
+    @PutMapping("transferDel/{id}/{balance}/{amounts}")
+    public Integer transferDel (@PathVariable Integer id, @PathVariable Integer balance, @PathVariable Integer amounts){
+        return clientService.TransferDel(id, balance, amounts);
+    }
+//добавление задаеннного баланса amount рецептиенту клиенту по id
+    @PutMapping("transferAdd/{id}/{balance}/{amounts}")
+    public Integer transferAdd (@PathVariable Integer id, @PathVariable Integer balance, @PathVariable Integer amounts){
+        return clientService.TransferAdd(id, balance, amounts);
+    }
 
 }
