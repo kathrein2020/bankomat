@@ -2,14 +2,16 @@ package com.scf.bankomat.service;
 
 import com.scf.bankomat.model.Client;
 import com.scf.bankomat.repository.ClientRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
+
 public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
@@ -26,6 +28,11 @@ public class ClientService {
         return clientRepository.findAll();
     }
 
+//    public List<Client> pMoney(Integer amount, String lastname) {
+//        Scanner scanner = new Scanner(System.in);
+//        amount = scanner.nextInt();
+//        return  clientRepository.putMoney(amount, lastname);
+//    }
 
     public void save(Client client) {
         clientRepository.save(client);
@@ -47,5 +54,26 @@ public class ClientService {
 
         clientRepository.deleteById(id);
     }
+
+
+
+
+    public Integer addMoney(Integer to, Integer amounts) {
+        return null;
+    }
+
+    public Integer updateBalance (String lastname, Integer balance){
+        return clientRepository.updateBalance(lastname, balance);
+    }
+
+    public int TransferDel (Integer id, Integer balance, Integer amounts){
+        return clientRepository.TransferDel(id, balance, amounts);
+    }
+
+    public Integer TransferAdd (Integer id, Integer balance, Integer amounts){
+        return clientRepository.TransferAdd(id, balance, amounts);
+    }
+
+
 
 }
